@@ -1,50 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+const translations = {
+    en: {
+        homeText: "Home",
+        aboutText: "About",
+        loginTitle: "Login",
+        accountPlaceholder: "Enter your account",
+        passwordPlaceholder: "Enter your password",
+        rememberPassword: "Remember Me",
+        forgotPassword: "Forgot Password?",
+        register: "Register",
+        login: "Login",
+        guestLogin: "Guest Login",
+    },
+    zh: {
+        homeText: "主页",
+        aboutText: "关于",
+        loginTitle: "登录",
+        accountPlaceholder: "输入您的账号",
+        passwordPlaceholder: "输入您的密码",
+        rememberPassword: "记住密码",
+        forgotPassword: "忘记密码?",
+        register: "注册",
+        login: "登录",
+        guestLogin: "游客登录",
+    }
+};
 
-<head>
-    <title>About</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" />
-</head>
+let currentLanguage = 'zh';
 
-<body>
-    <nav>
-        <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: space-around;">
-            <li style="display: flex; justify-content: center;"><a href="index.html" id="home-text">主页</a></li>
-            <li style="display: flex; justify-content: center;"><a href="about.html" id="about-text">关于</a></li>
-        </ul>
-    </nav>
-    <div class="Window" , id="main" , style="width: 80%; padding: 2%; margin-top: 10%;">
-        <p id="title" style="font-size: 28px">About</p>
-        <hr
-            style="border: 0; height: 1px; background-image: linear-gradient(to right, var(--text-color), var(--bg-color));">
-        <p id="p-func">实现了以下功能：</p>
-        <ul id="item-func">
-            <li>导航栏</li>
-            <li>更改网页字体为<a href="https://github.com/lxgw/LxgwWenKai">LxgwWenKai</a></li>
-            <li>对移动端与PC端有不同背景图片显示</li>
-            <li>登录输入框</li>
-            <li>各类按钮</li>
-            <li>选中框样式更改</li>
-            <li>鼠标悬停样式的修改（如按钮悬停改变颜色以及圆角、超链接悬停变色）</li>
-            <li>语言切换脚本</li>
-            <li>明亮/黑暗主题切换脚本</li>
-        </ul>
-        <div style="display: flex; margin-top: 15%; margin-bottom: 16px;"></div>
-            <svg fill="none" stroke-width="2" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="iconButton" id="themeSwitcher" 
-                style="overflow: visible;" onclick="toggleTheme()">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path
-                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
-                </path>
-            </svg>
-        </div>
-    </div>
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+    updateTextContent();
+}
 
-</body>
+function updateTextContent() {
+    document.getElementById('home-text').textContent = translations[currentLanguage].homeText;
+    document.getElementById('about-text').textContent = translations[currentLanguage].aboutText;
+    document.getElementById('login-title').textContent = translations[currentLanguage].loginTitle;
+    document.getElementById('account-placeholder').placeholder = translations[currentLanguage].accountPlaceholder;
+    document.getElementById('password-placeholder').placeholder = translations[currentLanguage].passwordPlaceholder;
+    document.getElementById('remember-password').textContent = translations[currentLanguage].rememberPassword;
+    document.getElementById('forgot-password').textContent = translations[currentLanguage].forgotPassword;
+    document.getElementById('register-btn').textContent = translations[currentLanguage].register;
+    document.getElementById('login-btn').textContent = translations[currentLanguage].login;
+    document.getElementById('guest-login-btn').textContent = translations[currentLanguage].guestLogin;
+}
 
-<script>
+updateTextContent();
+
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -64,13 +66,11 @@ function isMobileDevice() {
 if (isMobileDevice()) {
     // 如果是手机设备，修改样式
     document.querySelector('body').style.backgroundImage = 'url("Wallpaper-Mobile.png")'; // 修改背景图片
-    document.getElementById('themeSwitcher').style.scale = '2'; // 修改主题切换按钮大小
-    document.getElementById('title').style.fontSize = '48px'; // 修改标题字体大小
-    document.getElementById('p-func').style.fontSize = '32px'; // 修改功能列表标题字体大小
-    document.getElementById('item-func').style.fontSize = '32px'; // 修改功能列表字体大小
     document.getElementById('home-text').style.fontSize = '48px'; // 修改导航栏字体大小
     document.getElementById('about-text').style.fontSize = '48px'; // 修改导航栏字体大小
     document.getElementById('login-title').style.fontSize = '64px'; // 修改标题字体大小
+    document.getElementById('tab').style.fontSize = '20px'; // 修改表格字体大小
+    document.getElementById('title').style.fontSize = '48px'; // 修改标题字体大小
     document.getElementById('main').style.marginTop = '30%'; // 修改窗口上边距
     document.getElementById('main').style.width = '80%'; // 修改窗口宽度
     document.getElementById('main').style.height = 0.55 * height + 'px'; // 修改窗口高度
@@ -89,7 +89,6 @@ if (isMobileDevice()) {
     document.getElementById('login-btn').style.height = '100px'; // 修改登录按钮高度
     document.getElementById('guest-login-btn').style.fontSize = '40px'; // 修改游客登录按钮字体大小
     document.getElementById('guest-login-btn').style.height = '100px'; // 修改游客登录按钮高度
+    document.getElementById('languageSwitcher').style.scale = '2'; // 修改语言切换按钮大小
+    document.getElementById('themeSwitcher').style.scale = '2'; // 修改主题切换按钮大小
 }
-</script>
-
-</html>
