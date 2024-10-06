@@ -1,17 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" />
 </head>
 <body>
-    <div class="loginWindow">
-        <div class="container">
+    <nav>
+        <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: space-around;">
+            <li><a href="index.html" id="home-text">主页</a></li>
+            <li><a href="about.html" id="about-text">关于</a></li>
+        </ul>
+    </nav>
+    <div class="Window" style="margin-top: 10%; margin-bottom: 20px;">
+        <div class="container" style="margin-bottom: 10px;">
             <img src="logo.png" style="width: 48px; margin-right: 16px;">
-            <h2 style="color: cornflowerblue">登录 | Login</h2>
+            <h2 style="color: cornflowerblue" id="login-title">登录</h2>
         </div>
-        <input class="input" type="account" name="account" placeholder="输入您的账号">
-        <input class="input" type="password" name="password" placeholder="输入您的密码">
+        <input class="input" type="account" name="account" id="account-placeholder" placeholder="输入您的账号">
+        <input class="input" type="password" name="password" id="password-placeholder" placeholder="输入您的密码">
+        <div>
+            <label style="display: inline-block; margin-left: 24px;"> 
+                <div style="display: flex;">
+                    <input type="checkbox">
+                    <span class="custom-checkbox"></span>
+                    <span id="remember-password" style="color: var(--text-color); margin-left: 8px; transition: background-color 0.3s, color 0.3s;">记住密码</span>
+                </div>
+            </label>
+            <label style="float: right; margin-right: 24px;">
+                <a href="" id="forgot-password">忘记密码?</a>
+            </label>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 24px;">
+            <button class="button" id="register-btn">注册</button>
+            <button class="button" id="login-btn">登录</button>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 16px;">
+            <button class="button" id="guest-login-btn">游客登录</button>
+        </div>
+        <div style="display: flex; margin-top: 5%; margin-bottom: 16px;">
+            <svg fill="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="iconButton" id="hope-menu-cl-1-trigger" type="button" aria-expanded="false" height="1em" width="1em" style="overflow: visible; float: right"; onclick="toggleLanguage()">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 112h288M192 64v48M272 448l96-224 96 224M301.5 384h133M281.3 112S257 206 199 277 80 384 80 384"></path>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 336s-35-27-72-75-56-85-56-85"></path>
+            </svg>
+            <svg fill="none" stroke-width="2" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="iconButton" height="1em" width="1em" style="overflow: visible;" onclick="toggleTheme()">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+        </div>
     </div>
+    <br>
+    <div class="Window", style="width: 60%;">
+        <p style="font-size: large;">Project Topic: Logging Website</p>
+        <div style="display: flex; justify-content: center;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Student ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Co-Creator 1</td>
+                        <td>杨煜程</td>
+                        <td>202315020421</td>
+                    </tr>
+                    <tr>
+                        <td>Co-Creator 2</td>
+                        <td>穆冠旭</td>
+                        <td>202315030314</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <br>
 </body>
+
+<script>
+    const translations = {
+        en: {
+            homeText: "Home",
+            aboutText: "About",
+            loginTitle: "Login",
+            accountPlaceholder: "Enter your account",
+            passwordPlaceholder: "Enter your password",
+            rememberPassword: "Remember Me",
+            forgotPassword: "Forgot Password?",
+            register: "Register",
+            login: "Login",
+            guestLogin: "Guest Login",
+        },
+        zh: {
+            homeText: "主页",
+            aboutText: "关于",
+            loginTitle: "登录",
+            accountPlaceholder: "输入您的账号",
+            passwordPlaceholder: "输入您的密码",
+            rememberPassword: "记住密码",
+            forgotPassword: "忘记密码?",
+            register: "注册",
+            login: "登录",
+            guestLogin: "游客登录",
+        }
+    };
+
+    let currentLanguage = 'zh';
+
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+        updateTextContent();
+    }
+
+    function updateTextContent() {
+        document.getElementById('home-text').textContent = translations[currentLanguage].homeText;
+        document.getElementById('about-text').textContent = translations[currentLanguage].aboutText;
+        document.getElementById('login-title').textContent = translations[currentLanguage].loginTitle;
+        document.getElementById('account-placeholder').placeholder = translations[currentLanguage].accountPlaceholder;
+        document.getElementById('password-placeholder').placeholder = translations[currentLanguage].passwordPlaceholder;
+        document.getElementById('remember-password').textContent = translations[currentLanguage].rememberPassword;
+        document.getElementById('forgot-password').textContent = translations[currentLanguage].forgotPassword;
+        document.getElementById('register-btn').textContent = translations[currentLanguage].register;
+        document.getElementById('login-btn').textContent = translations[currentLanguage].login;
+        document.getElementById('guest-login-btn').textContent = translations[currentLanguage].guestLogin;
+    }
+
+    updateTextContent();
+
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
 </html>
