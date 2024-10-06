@@ -6,6 +6,37 @@
         <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" />
     </head>
 <body>
+    <nav>
+        <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: space-around; margin-right: 16px;">
+            <li><a href="index.html" id="home-text">主页</a></li>
+            <li><a href="about.html" id="about-text">关于</a></li>
+        </ul>
+    </nav>
+    <div class="Window" style="margin-top: 10%; width: 60%; padding: 2%;">
+        <p style="font-size: large;">About</p>
+        <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, var(--text-color), var(--bg-color));">
+        <p>实现了以下功能：</p>
+        <ul>
+            <li>导航栏</li>
+            <li>更改网页字体为<a href="https://github.com/lxgw/LxgwWenKai">LxgwWenKai</a></li>
+            <li>登录输入框</li>
+            <li>各类按钮</li>
+            <li>选中框样式更改</li>
+            <li>鼠标悬停样式的修改（如按钮悬停改变颜色以及圆角、超链接悬停变色）</li>
+            <li>语言切换脚本</li>
+            <li>明亮/黑暗主题切换脚本</li>
+        </ul>
+    </div>
 
 </body>
+<script>
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
 </html>

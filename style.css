@@ -1,11 +1,11 @@
 nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
     width: 100%;
     padding: 10px 20px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 nav a {
     color: var(--text-color);
