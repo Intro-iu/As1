@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    background-image: url("Wallpaper.png");
+    background-image: url("Wallpaper-PC.png");
 }
 
 @media(max-width: 768px) {
